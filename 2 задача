@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std; 
+int main()
+{
+int n, min, q=1; 
+cin >> n;
+int *arr = new int[n];
+for (int i=0;i<n;i++)
+{
+cin >> arr[i];
+min=arr[0];
+}
+for (int i=1;i<n;i++)
+{
+if(arr[i]<min)
+{
+q=0;
+min=arr[i];
+}
+if (arr[i]==min)
+q++;
+}
+cout << q;
+delete [] arr;
+}
