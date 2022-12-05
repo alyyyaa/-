@@ -1,0 +1,42 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void Qsort(int a[], int L, int R)
+{
+    int i = L, j = R, w, x;
+    x = a[(L + R) / 2];
+    do
+    {
+        while (a[i] < x) i++;
+        while (a[j] > x) j--;
+        if (i <= j)
+        {
+            w = a[i]; a[i] = a[j]; a[j] = w;
+            i++; j--;
+        }
+    } while (i < j);
+    if (L < j) Qsort(a, L, j);
+    if (i < R) Qsort(a, i, R);
+}
+
+
+int main()
+{
+    ifstream fin;
+    fin.open("input.txt");
+    ofstream fout;
+    fout.open("output.txt");
+    int n; //считываем кол-во элементов
+    fin >> n;
+    int* a = new int [n];
+    for (int i = 0; i < n; i++) {
+        fin >> a[i];
+
+    }
+
+    Qsort(a, 0, n - 1);
+    for (int i = 0; i < n; i++) {
+        fout << a[i] << " ";
+    }
+}
