@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+void trimrightc(string &str,string &str1)
+{
+  int i =0, res;
+  while (str.find(str, i) != -1) {
+  res = str.find(str1, i);
+  i++;
+  }
+  str.erase(res, str1.size());
+}
+
+int main()
+{
+  string str1 = "a"; //символ который надо удалить
+  string str = "irjguhtuhgra322"; // строка в которой надо удалить
+  trimrightc(str, str1);
+  cout << str;
+}
